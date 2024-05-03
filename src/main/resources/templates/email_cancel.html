@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Email Cancelation Booking Notification</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: #f6f6f6;
+		}
+		.container {
+			max-width: 600px;
+			margin: 0 auto;
+			background-color: #ffffff;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+		h2 {
+			color: #ff385c;
+			text-align: center;
+		}
+		.booking-info {
+			margin-top: 20px;
+		}
+		.booking-info li {
+			margin-bottom: 10px;
+		}
+		.booking-info li span {
+			font-weight: bold;
+		}
+		.support-link {
+			display: inline-block;
+			margin-top: 20px;
+			background-color: #ff385c;
+			color: #ffffff;
+			text-decoration: none;
+			padding: 10px 20px;
+			border-radius: 5px;
+		}
+		.thank-you {
+			margin-top: 20px;
+			text-align: center;
+			color: #666666;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<h2>Thông Báo Hủy Đặt Phòng Thành Công</h2>
+	<p>Xin chào, <span th:text="${bookingDTO.getUserDTOS().getLastName()}"></span>,</p>
+	<p>Quý khách đã hủy thành công đặt phòng từ ngày <span th:text="${bookingDTO.getCheckIn()}"></span> đến ngày <span th:text="${bookingDTO.getCheckOut()}"></span>.</p>
+
+	<div class="booking-info">
+		<p><strong>Mã đặt phòng:</strong> <span th:text="${bookingDTO.getBookingId()}"></span></p>
+		<p><strong>Ngày nhận phòng:</strong> <span th:text="${bookingDTO.getCheckIn()}"></span></p>
+		<p><strong>Ngày trả phòng:</strong> <span th:text="${bookingDTO.getCheckOut()}"></span></p>
+		<p><strong>Ngày hủy đặt phòng:</strong> <span th:text="${cancelDate}"></span></p>
+	</div>
+	<p>Quý khách có thể xem các lựa chọn đặt phòng khác hoặc liên hệ với chúng tôi qua <a href="http://localhost:3000" class="support-link">Airbnb</a> để được giải đáp thêm.</p>
+	<p class="thank-you">Cảm ơn quý khách đã sử dụng Airbnb. Chúng tôi hy vọng sẽ có cơ hội phục vụ quý khách trong tươnog lai.</p>
+	<p class="thank-you">Trân trọng,<br>[AIRBNB]</p>
+</div>
+</body>
+</html>

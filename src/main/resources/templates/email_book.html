@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>Email Template</title>
+</head>
+<body>
+	<div
+		style="max-width: 60%; margin: 0 auto; background-color: burlywood; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+		<div>
+			<div style="width: 40%; height: 1px; float: left;"></div>
+			<image style="width: 20%;"
+				src="https://th.bing.com/th/id/R.7dbad506beb734d50783ce172302b9c8?rik=XS3iq2HJ8v9e0A&pid=ImgRaw&r=0" />
+			<div style="width: 40%; float: right;"></div>
+		</div>
+		<h1 style="color: #d9534f; text-align: center;">
+			Xin Chào <span th:text="${username}"></span>
+		</h1>
+		<h4 style="line-height: 1.6;">Phê duyệt trước tại Bungalow Đôi 1
+			- Nhìn ra vườn+Xe đạp miễn phí từ ngày 11 - 16 tháng 2 năm 2024</h4>
+		<p>Anna nhận thấy bạn muốn lưu trú tại Double Bungalow 1 - Garden
+			View+Miễn phí xe đạp và đã chấp thuận trước chuyến đi của bạn từ ngày
+			11 tháng 2 năm 2024 đến ngày 16 tháng 2 năm 2024 . Giờ đây, bạn có
+			thể đặt chỗ trước 8:56 sáng ngày 3 tháng 2 năm 2024 để xác nhận việc
+			đặt chỗ của mình.</p>
+		<a href="https://www.airbnb.com.vn/" target="_blank">Tới xem</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Success Booking Notification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f6f6f6;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      color: #ff385c;
+      text-align: center;
+    }
+    .booking-info {
+      margin-top: 20px;
+    }
+    .booking-info li {
+      margin-bottom: 10px;
+    }
+    .booking-info li span {
+      font-weight: bold;
+    }
+    .payment-link {
+      display: inline-block;
+      margin-top: 20px;
+      background-color: #ff385c;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+    }
+    .thank-you {
+      margin-top: 20px;
+      text-align: center;
+      color: #666666;
+    }
+    .property-card {
+      display: flex;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .property-image {
+      width: 200px;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .property-details {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .property-title {
+      margin-top: 0;
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Thông Báo Đặt Phòng Thành Công</h2>
+  <p>Xin chào, <span th:text="${bookingDTO.getUserDTOS().getLastName()}"></span>,</p>
+  <p>Quý khách đã hoàn thành việc đặt phòng từ ngày <span th:text="${bookingDTO.getCheckIn()}"></span> đến ngày <span th:text="${bookingDTO.checkOut}"></span>. Tuy nhiên, quá trình thanh toán vẫn chưa được hoàn tất.</p>
+  <div class="property-card">
+    <img th:src="${bookingDTO.getPropertyDTOS().getThumbnail()}" alt="Hình ảnh căn hộ" class="property-image">
+    <div class="property-details">
+      <h3 class="property-title">Thông Tin Căn Hộ</h3>
+      <p><strong>Tên căn hộ:</strong> <span th:text="${bookingDTO.getPropertyDTOS().getOwner().getLastName()}"></span></p>
+      <p><strong>Địa chỉ:</strong> <span th:text="${bookingDTO.getPropertyDTOS().getAddress()}"></span></p>
+      <p><strong>Xếp hạng:</strong> <span th:text="${bookingDTO.getPropertyDTOS().getRating()}"></span> sao</p>
+      <p><strong>Giá thuê:</strong> <span th:text="${bookingDTO.getPropertyDTOS().getPrice()}"></span> USD/đêm</p>
+    </div>
+  </div>
+
+  <div class="booking-info">
+    <p><strong>Mã đặt phòng:</strong> <span th:text="${bookingId}"></span></p>
+    <p><strong>Ngày nhận phòng:</strong> <span th:text="${bookingDTO.getCheckIn()}"></span></p>
+    <p><strong>Ngày trả phòng:</strong> <span th:text="${bookingDTO.getCheckOut()}"></span></p>
+    <p><strong>Tổng số tiền:</strong> <span th:text="${bookingDTO.getTotal()}"></span> USD</p>
+    <p><strong>Ngày đặt phòng:</strong> <span th:text="${bookingDTO.getDateBooking()}"></span></p>
+  </div>
+  <p>Quý khách xem thông tin chuyến đi tại <a href="http://localhost:3000/trips" class="payment-link">link này</a> hoặc liên hệ trực tiếp qua số điện thoại 19001268 để được hỗ trợ.</p>
+  <p class="thank-you">Cảm ơn quý khách đã lựa chọn Airbnb cho kỳ nghỉ của mình. Chúng tôi rất mong được chào đón quý khách!</p>
+  <p class="thank-you">Trân trọng,<br>[AIRBNB]</p>
+</div>
+</body>
+</html>
